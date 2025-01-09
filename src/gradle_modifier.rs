@@ -12,8 +12,8 @@ impl GradleModifier {
 
     pub fn new(path: PathBuf, kts: bool) -> Result<Self, regex::Error> {
         let regex = match kts {
-            true => Regex::new(r"^\s*val\s+jimmerVersion\s*=\s*(.*)")?,
-            false => Regex::new(r"^\s*jimmerVersion\s*=\s*(.*)")?
+            true => Regex::new(r"^\s*val\s+jimmerVersion\s*=")?,
+            false => Regex::new(r"^\s*jimmerVersion\s*=")?
         };
         let optinal_regex = match kts {
             true => Some(Regex::new(r"^\s*val\s+jimmerVersion\s+by\s+extra\s*\{")?),

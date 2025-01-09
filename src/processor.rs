@@ -21,7 +21,8 @@ impl<'a> Processor<'a> {
             } else if let Some(file_name) = entry.path().file_name() {
                 if let Some(file_name) = file_name.to_str() {
                     match file_name {
-                        "pom.xml" => PomModifier::new(entry.path()).execute(self.version)?,
+                        "pom.xml" => PomModifier::new(entry.path())
+                            .execute(self.version)?,
                         "build.gradle" => GradleModifier::new(entry.path(), false)?
                             .execute(self.version)?,
                         "build.gradle.kts" => GradleModifier::new(entry.path(), true)?

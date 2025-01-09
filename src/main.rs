@@ -11,6 +11,7 @@ fn main() {
     println!("Please input version: ");
     let mut version = String::new();
     std::io::stdin().read_line(&mut version).expect("Failed to read version");
+    version = version.trim().to_string();
     let path = root_dir().expect("Failed to get root directory");
     Processor::new(version.as_str()).handle_dir(path).expect("Failed to read directory");
 }
